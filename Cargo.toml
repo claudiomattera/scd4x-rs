@@ -55,7 +55,7 @@ embedded-hal = { version = "1", default-features = false, optional = true }
 embedded-hal-async = { version = "1", default-features = false, optional = true }
 
 # Unit of measurement
-uom = { version = "0.35", default-features = false, features = ["f32", "si"], optional = true }
+uom = { version = "0.36", default-features = false, features = ["f32", "si"], optional = true }
 
 [dev-dependencies]
 # Logging
