@@ -1,6 +1,6 @@
 [package]
 name = "scd4x-rs"
-version = "0.2.0-dev"
+version = "0.2.0"
 authors = ["Claudio Mattera <dev@claudiomattera.it>"]
 edition = "2021"
 description = "A crate to query SCD4x sensors over I²C"
