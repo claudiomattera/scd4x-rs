@@ -42,7 +42,17 @@ pub use self::error::Error;
 #[cfg(any(feature = "async", feature = "blocking"))]
 mod sample;
 #[cfg(any(feature = "async", feature = "blocking"))]
-pub use self::sample::{Altitude, Co2, Humidity, Pressure, Sample, Temperature};
+pub use self::sample::Altitude;
+#[cfg(any(feature = "async", feature = "blocking"))]
+pub use self::sample::Co2;
+#[cfg(any(feature = "async", feature = "blocking"))]
+pub use self::sample::Humidity;
+#[cfg(any(feature = "async", feature = "blocking"))]
+pub use self::sample::Pressure;
+#[cfg(any(feature = "async", feature = "blocking"))]
+pub use self::sample::Sample;
+#[cfg(any(feature = "async", feature = "blocking"))]
+pub use self::sample::Temperature;
 
 #[cfg(any(feature = "async", feature = "blocking"))]
 mod util;
@@ -50,4 +60,8 @@ mod util;
 #[cfg(any(feature = "async", feature = "blocking"))]
 mod state;
 #[cfg(any(feature = "async", feature = "blocking"))]
-pub use self::state::{Idle, Measuring, State};
+pub use self::state::Idle;
+#[cfg(any(feature = "async", feature = "blocking"))]
+pub use self::state::Measuring;
+#[cfg(any(feature = "async", feature = "blocking"))]
+pub use self::state::State;

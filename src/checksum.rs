@@ -30,7 +30,7 @@ pub fn compute(data: [u8; 2]) -> u8 {
     const CRC8_POLYNOMIAL: u8 = 0x31;
 
     /// Initial value for CRC computation
-    const CRC8_INIT: u8 = 0xFF;
+    const CRC8_INIT: u8 = 0xff;
 
     let mut crc = CRC8_INIT;
 

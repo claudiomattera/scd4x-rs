@@ -8,11 +8,20 @@
 
 //! Data types and functions for conversions between values and words
 
-use crate::sample::{
-    altitude_from_meter, co2_from_ppm, hectopascal_from_pressure, humidity_from_number,
-    meter_from_altitude, ppm_from_co2, temperature_from_celsius, Sample,
-};
-use crate::{sample::celsius_from_temperature, Altitude, Co2, Humidity, Pressure, Temperature};
+use crate::sample::altitude_from_meter;
+use crate::sample::celsius_from_temperature;
+use crate::sample::co2_from_ppm;
+use crate::sample::hectopascal_from_pressure;
+use crate::sample::humidity_from_number;
+use crate::sample::meter_from_altitude;
+use crate::sample::ppm_from_co2;
+use crate::sample::temperature_from_celsius;
+use crate::sample::Sample;
+use crate::Altitude;
+use crate::Co2;
+use crate::Humidity;
+use crate::Pressure;
+use crate::Temperature;
 
 /// Convert three words to a serial number
 pub(crate) fn words_to_serial_number(word0: u16, word1: u16, word2: u16) -> u64 {

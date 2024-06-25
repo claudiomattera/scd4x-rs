@@ -8,7 +8,8 @@
 
 //! Data types and functions for error handling
 
-use embedded_hal::i2c::{Error as I2cError, ErrorKind as I2cErrorKind};
+use embedded_hal::i2c::Error as I2cError;
+use embedded_hal::i2c::ErrorKind as I2cErrorKind;
 
 /// An error
 #[derive(Debug, PartialEq)]

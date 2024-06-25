@@ -16,20 +16,27 @@
 
 use core::time::Duration;
 
-use crate::{
-    conversion::{
-        altitude_to_word, ambient_pressure_to_word, co2_to_word, signed_word_to_co2,
-        temperature_offset_to_word, word_to_altitude, word_to_temperature_offset, words_to_sample,
-        words_to_serial_number,
-    },
-    sample::Sample,
-    Altitude, Co2, Pressure, Temperature,
-};
+use crate::conversion::altitude_to_word;
+use crate::conversion::ambient_pressure_to_word;
+use crate::conversion::co2_to_word;
+use crate::conversion::signed_word_to_co2;
+use crate::conversion::temperature_offset_to_word;
+use crate::conversion::word_to_altitude;
+use crate::conversion::word_to_temperature_offset;
+use crate::conversion::words_to_sample;
+use crate::conversion::words_to_serial_number;
+use crate::sample::Sample;
+use crate::Altitude;
+use crate::Co2;
+use crate::Pressure;
+use crate::Temperature;
 
-use super::command::{
-    Command, ReadThreeWordsSequence, ReadWordSequence, SendCommandAndFetchResultSequence,
-    SendCommandSequence, WriteWordSequence,
-};
+use super::command::Command;
+use super::command::ReadThreeWordsSequence;
+use super::command::ReadWordSequence;
+use super::command::SendCommandAndFetchResultSequence;
+use super::command::SendCommandSequence;
+use super::command::WriteWordSequence;
 
 /// Command for reinitializing the sensor
 ///

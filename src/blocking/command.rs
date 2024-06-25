@@ -12,13 +12,13 @@ use core::time::Duration;
 
 use log::trace;
 
-use embedded_hal::{delay::DelayNs, i2c::I2c};
+use embedded_hal::delay::DelayNs;
+use embedded_hal::i2c::I2c;
 
-use crate::{
-    compute_checksum,
-    util::{buffer_to_three_words, buffer_to_word},
-    Error,
-};
+use crate::compute_checksum;
+use crate::util::buffer_to_three_words;
+use crate::util::buffer_to_word;
+use crate::Error;
 
 /// A command to the sensor
 pub(crate) trait Command {

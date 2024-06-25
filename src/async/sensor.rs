@@ -12,14 +12,22 @@ use core::marker::PhantomData;
 
 use log::debug;
 
-use embedded_hal_async::{delay::DelayNs, i2c::I2c};
+use embedded_hal_async::delay::DelayNs;
+use embedded_hal_async::i2c::I2c;
 
-use crate::{
-    constants::DEFAULT_ADDRESS, sample::Sample, Altitude, Co2, Error, Idle, Measuring, Pressure,
-    State, Temperature,
-};
+use crate::constants::DEFAULT_ADDRESS;
+use crate::sample::Sample;
+use crate::Altitude;
+use crate::Co2;
+use crate::Error;
+use crate::Idle;
+use crate::Measuring;
+use crate::Pressure;
+use crate::State;
+use crate::Temperature;
 
-use super::{commands, Command};
+use super::commands;
+use super::Command;
 
 /// Interface to SCD4x sensor over I²C
 pub struct Scd4x<I2c, Delay, State> {
