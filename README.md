@@ -2,10 +2,10 @@ Rust SCD4x Crate
 ====
 
 ![Version](https://img.shields.io/crates/v/scd4x-rs)
-![Documentation](https://img.shields.io/docsrs/scd4x-rs/0.1.0)
-![Downloads](https://img.shields.io/crates/dv/scd4x-rs/0.1.0)
-![License](https://img.shields.io/crates/l/scd4x-rs/0.1.0)
-![MSRV](https://img.shields.io/crates/msrv/scd4x-rs/0.1.0)
+![Documentation](https://img.shields.io/docsrs/scd4x-rs/0.2.0)
+![Downloads](https://img.shields.io/crates/dv/scd4x-rs/0.2.0)
+![License](https://img.shields.io/crates/l/scd4x-rs/0.2.0)
+![MSRV](https://img.shields.io/crates/msrv/scd4x-rs/0.2.0)
 
 A Rust crate to query CO₂ concentration, temperature and humidity from sensor [SCD4x]
 
@@ -28,7 +28,7 @@ Add the dependency to `Cargo.toml`.
 
 ~~~~toml
 [dependencies.scd4x-rs]
-version = "0.1.0"
+version = "0.2.0"
 ~~~~
 
 Optionally enable the desired features.
@@ -75,7 +75,7 @@ let sensor = sensor.stop_periodic_measurement()?;
 ~~~~
 
 An `AsyncScd4x` structure can be used with asynchronous HALs.
-Its API is completely identical to `Scd4x`, just with `.async` at the end of function calls.
+Its API is completely identical to `Scd4x`, just with `.await` at the end of function calls.
 
 ~~~~rust
 use scd4x_rs::AsyncScd4x;
@@ -109,7 +109,32 @@ for _ in 0..5 {
 let sensor = sensor.stop_periodic_measurement().await?;
 ~~~~
 
-See the [examples](./examples) for more information.
+
+Examples
+----
+
+The examples in directory [`examples`](./examples) show how to use this crate with an [Adafruit FT232H] board.
+
+Connect the board to the sensor as shown (yes, D1 and D2 must be shorted for I²C to work).
+
+| Adafruit FT232H | SCD4x |
+|-----------------|-------|
+| 3v              | VIN   |
+| Gnd             | GND   |
+| D0              | SCL   |
+| D1 and D2       | SDA   |
+
+![Connection between board Adafruit FT232H and sensor SCD4x](./sketch/ft232h.png)
+
+And run the examples:
+
+~~~~shell
+just run-example continuous
+
+just run-example low-power
+~~~~
+
+[Adafruit FT232H]: https://www.adafruit.com/product/2264
 
 
 Sensor State

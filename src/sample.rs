@@ -9,16 +9,25 @@
 //! Data types and functions for SCD4x sensor samples
 
 #[cfg(feature = "uom")]
-use uom::si::{
-    f32::{
-        Length as UomAltitude, Pressure as UomPressure, Ratio as UomHumidity, Ratio as UomCo2,
-        ThermodynamicTemperature as UomTemperature,
-    },
-    length::meter,
-    pressure::hectopascal,
-    ratio::{part_per_million, percent},
-    thermodynamic_temperature::degree_celsius,
-};
+use uom::si::f32::Length as UomAltitude;
+#[cfg(feature = "uom")]
+use uom::si::f32::Pressure as UomPressure;
+#[cfg(feature = "uom")]
+use uom::si::f32::Ratio as UomHumidity;
+#[cfg(feature = "uom")]
+use uom::si::f32::Ratio as UomCo2;
+#[cfg(feature = "uom")]
+use uom::si::f32::ThermodynamicTemperature as UomTemperature;
+#[cfg(feature = "uom")]
+use uom::si::length::meter;
+#[cfg(feature = "uom")]
+use uom::si::pressure::hectopascal;
+#[cfg(feature = "uom")]
+use uom::si::ratio::part_per_million;
+#[cfg(feature = "uom")]
+use uom::si::ratio::percent;
+#[cfg(feature = "uom")]
+use uom::si::thermodynamic_temperature::degree_celsius;
 
 #[cfg(feature = "uom")]
 /// Type for CO₂ concentration values
@@ -76,7 +85,7 @@ pub(crate) fn hectopascal_from_pressure(pressure: Pressure) -> f32 {
     pressure.get::<hectopascal>()
 }
 
-#[cfg(feature = "uom")]
+#[cfg(all(feature = "uom", feature = "blocking"))]
 #[cfg(test)]
 /// Convert a raw value in hectoPascal to a pressure
 pub(crate) fn pressure_from_hectopascal(raw: f32) -> Pressure {
@@ -151,7 +160,7 @@ pub(crate) fn hectopascal_from_pressure(pressure: Pressure) -> f32 {
     pressure
 }
 
-#[cfg(not(feature = "uom"))]
+#[cfg(all(not(feature = "uom"), feature = "blocking"))]
 #[cfg(test)]
 /// Convert a raw value in hectoPascal to a pressure
 pub(crate) fn pressure_from_hectopascal(raw: f32) -> Pressure {

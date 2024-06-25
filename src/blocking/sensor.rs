@@ -12,14 +12,22 @@ use core::marker::PhantomData;
 
 use log::debug;
 
-use embedded_hal::{delay::DelayNs, i2c::I2c};
+use embedded_hal::delay::DelayNs;
+use embedded_hal::i2c::I2c;
 
-use crate::{
-    constants::DEFAULT_ADDRESS, sample::Sample, Altitude, Co2, Error, Idle, Measuring, Pressure,
-    State, Temperature,
-};
+use crate::constants::DEFAULT_ADDRESS;
+use crate::sample::Sample;
+use crate::Altitude;
+use crate::Co2;
+use crate::Error;
+use crate::Idle;
+use crate::Measuring;
+use crate::Pressure;
+use crate::State;
+use crate::Temperature;
 
-use super::{commands, Command};
+use super::commands;
+use super::Command;
 
 /// Interface to SCD4x sensor over I²C
 pub struct Scd4x<I2c, Delay, State> {
@@ -414,15 +422,15 @@ mod tests {
     use super::*;
 
     use embedded_hal_mock::eh1::delay::NoopDelay as DelayMock;
-    use embedded_hal_mock::eh1::i2c::{Mock as I2cMock, Transaction as I2cTransaction};
+    use embedded_hal_mock::eh1::i2c::Mock as I2cMock;
+    use embedded_hal_mock::eh1::i2c::Transaction as I2cTransaction;
 
-    use crate::{
-        sample::{
-            altitude_from_meter, co2_from_ppm, humidity_from_number, pressure_from_hectopascal,
-            temperature_from_celsius,
-        },
-        Error,
-    };
+    use crate::sample::altitude_from_meter;
+    use crate::sample::co2_from_ppm;
+    use crate::sample::humidity_from_number;
+    use crate::sample::pressure_from_hectopascal;
+    use crate::sample::temperature_from_celsius;
+    use crate::Error;
 
     #[test]
     fn test_get_serial_number() -> Result<(), Error> {

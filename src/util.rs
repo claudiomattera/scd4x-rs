@@ -8,7 +8,8 @@
 
 //! Data types and functions for miscellaneous utilities
 
-use crate::{verify_checksum, Error};
+use crate::verify_checksum;
+use crate::Error;
 
 /// Convert a 9-bytes buffer to three words
 ///

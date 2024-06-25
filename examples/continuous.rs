@@ -18,14 +18,15 @@ use log::info;
 
 use embedded_hal::delay::DelayNs;
 use embedded_hal::i2c::I2c;
-use ftdi_embedded_hal::{Delay, FtHal};
+use ftdi_embedded_hal::Delay;
+use ftdi_embedded_hal::FtHal;
 
-use uom::si::{
-    ratio::{part_per_million, percent},
-    thermodynamic_temperature::degree_celsius,
-};
+use uom::si::ratio::part_per_million;
+use uom::si::ratio::percent;
+use uom::si::thermodynamic_temperature::degree_celsius;
 
-use scd4x_rs::{Error as Scd4xError, Scd4x};
+use scd4x_rs::Error as Scd4xError;
+use scd4x_rs::Scd4x;
 
 /// Number of measurements to read
 const MEASUREMENTS_COUNT: usize = 10;
