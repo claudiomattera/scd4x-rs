@@ -73,8 +73,8 @@ missing_docs = "deny"
 
 [lints.clippy]
 # Categories
-cargo = "deny"
-pedantic = "deny"
+cargo = { level = "deny", priority = -1 }
+pedantic = { level = "deny", priority = -1 }
 
 # Individuals
 alloc_instead_of_core = "deny"
