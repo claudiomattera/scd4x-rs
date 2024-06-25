@@ -2,10 +2,10 @@ Rust SCD4x Crate
 ====
 
 ![Version](https://img.shields.io/crates/v/scd4x-rs)
-![Documentation](https://img.shields.io/docsrs/scd4x-rs/0.1.0)
-![Downloads](https://img.shields.io/crates/dv/scd4x-rs/0.1.0)
-![License](https://img.shields.io/crates/l/scd4x-rs/0.1.0)
-![MSRV](https://img.shields.io/crates/msrv/scd4x-rs/0.1.0)
+![Documentation](https://img.shields.io/docsrs/scd4x-rs/0.2.0)
+![Downloads](https://img.shields.io/crates/dv/scd4x-rs/0.2.0)
+![License](https://img.shields.io/crates/l/scd4x-rs/0.2.0)
+![MSRV](https://img.shields.io/crates/msrv/scd4x-rs/0.2.0)
 
 A Rust crate to query CO₂ concentration, temperature and humidity from sensor [SCD4x]
 
@@ -28,7 +28,7 @@ Add the dependency to `Cargo.toml`.
 
 ~~~~toml
 [dependencies.scd4x-rs]
-version = "0.1.0"
+version = "0.2.0"
 ~~~~
 
 Optionally enable the desired features.
