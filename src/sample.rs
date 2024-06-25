@@ -76,7 +76,7 @@ pub(crate) fn hectopascal_from_pressure(pressure: Pressure) -> f32 {
     pressure.get::<hectopascal>()
 }
 
-#[cfg(feature = "uom")]
+#[cfg(all(feature = "uom", feature = "blocking"))]
 #[cfg(test)]
 /// Convert a raw value in hectoPascal to a pressure
 pub(crate) fn pressure_from_hectopascal(raw: f32) -> Pressure {
@@ -151,7 +151,7 @@ pub(crate) fn hectopascal_from_pressure(pressure: Pressure) -> f32 {
     pressure
 }
 
-#[cfg(not(feature = "uom"))]
+#[cfg(all(not(feature = "uom"), feature = "blocking"))]
 #[cfg(test)]
 /// Convert a raw value in hectoPascal to a pressure
 pub(crate) fn pressure_from_hectopascal(raw: f32) -> Pressure {
