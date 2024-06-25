@@ -75,7 +75,7 @@ let sensor = sensor.stop_periodic_measurement()?;
 ~~~~
 
 An `AsyncScd4x` structure can be used with asynchronous HALs.
-Its API is completely identical to `Scd4x`, just with `.async` at the end of function calls.
+Its API is completely identical to `Scd4x`, just with `.await` at the end of function calls.
 
 ~~~~rust
 use scd4x_rs::AsyncScd4x;
