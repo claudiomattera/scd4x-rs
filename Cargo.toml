@@ -68,6 +68,9 @@ embedded-hal-mock = { version = "0.11", default-features = false, features = ["e
 ftdi-embedded-hal = { version = "0.22", default-features = false, features = ["libftd2xx", "libftd2xx-static"] }
 ftdi = { version = "0.1", default-features = false }
 
+# Asynchronous runtime
+tokio = { version = "1", default-features = false, features = ["rt", "macros"] }
+
 [lints.rust]
 missing_docs = "deny"
 
