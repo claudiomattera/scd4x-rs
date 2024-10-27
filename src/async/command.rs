@@ -113,7 +113,10 @@ impl SequenceType for SendCommandSequence {
         i2c.write(address, &buffer).await?;
 
         trace!("Wait {delay:?}");
-        #[allow(clippy::cast_possible_truncation)]
+        #[expect(
+            clippy::cast_possible_truncation,
+            reason = "Constants are within limits"
+        )]
         delayer.delay_ms(delay.as_millis() as u32).await;
 
         Ok(())
@@ -162,7 +165,10 @@ impl SequenceType for SendCommandAndFetchResultSequence {
         i2c.write(address, &buffer).await?;
 
         trace!("Wait {delay:?}");
-        #[allow(clippy::cast_possible_truncation)]
+        #[expect(
+            clippy::cast_possible_truncation,
+            reason = "Constants are within limits"
+        )]
         delayer.delay_ms(delay.as_millis() as u32).await;
 
         let mut output_buffer: [u8; 3] = [0; 3];
@@ -204,7 +210,10 @@ impl SequenceType for ReadWordSequence {
         i2c.write(address, &buffer).await?;
 
         trace!("Wait {delay:?}");
-        #[allow(clippy::cast_possible_truncation)]
+        #[expect(
+            clippy::cast_possible_truncation,
+            reason = "Constants are within limits"
+        )]
         delayer.delay_ms(delay.as_millis() as u32).await;
 
         trace!("Read data");
@@ -244,7 +253,10 @@ impl SequenceType for ReadThreeWordsSequence {
         i2c.write(address, &buffer).await?;
 
         trace!("Wait {delay:?}");
-        #[allow(clippy::cast_possible_truncation)]
+        #[expect(
+            clippy::cast_possible_truncation,
+            reason = "Constants are within limits"
+        )]
         delayer.delay_ms(delay.as_millis() as u32).await;
 
         trace!("Read data");
@@ -310,7 +322,10 @@ impl SequenceType for WriteWordSequence {
         i2c.write(address, &buffer).await?;
 
         trace!("Wait {delay:?}");
-        #[allow(clippy::cast_possible_truncation)]
+        #[expect(
+            clippy::cast_possible_truncation,
+            reason = "Constants are within limits"
+        )]
         delayer.delay_ms(delay.as_millis() as u32).await;
 
         Ok(())

@@ -55,10 +55,14 @@ pub(crate) fn word_to_altitude(word: u16) -> Altitude {
 
 /// Convert an altitude value to a word
 pub(crate) fn altitude_to_word(altitude: Altitude) -> u16 {
-    let meter = meter_from_altitude(altitude);
+    let meters = meter_from_altitude(altitude);
 
-    #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]
-    let word = meter as u16;
+    #[expect(
+        clippy::cast_possible_truncation,
+        clippy::cast_sign_loss,
+        reason = "Manually validated"
+    )]
+    let word = meters.clamp(0_f32, f32::from(u16::MAX)) as u16;
 
     word
 }
@@ -73,8 +77,15 @@ pub(crate) fn word_to_temperature_offset(word: u16) -> Temperature {
 pub(crate) fn temperature_offset_to_word(temperature_offset: Temperature) -> u16 {
     let celsius = celsius_from_temperature(temperature_offset);
 
-    #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]
-    let word = ((65536_f32 * celsius) / 175_f32) as u16;
+    let intermediate = (65536_f32 * celsius) / 175_f32;
+
+    #[expect(
+        clippy::cast_possible_truncation,
+        clippy::cast_sign_loss,
+        reason = "Manually validated"
+    )]
+    let word = intermediate.clamp(0_f32, f32::from(u16::MAX)) as u16;
+
     word
 }
 
@@ -86,8 +97,14 @@ pub(crate) fn word_to_temperature(word: u16) -> Temperature {
 
 /// Convert an ambient pressure value to a word
 pub(crate) fn ambient_pressure_to_word(ambient_pressure: Pressure) -> u16 {
-    #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]
-    let word = hectopascal_from_pressure(ambient_pressure) as u16;
+    let hectopascals = hectopascal_from_pressure(ambient_pressure);
+
+    #[expect(
+        clippy::cast_possible_truncation,
+        clippy::cast_sign_loss,
+        reason = "Manually validated"
+    )]
+    let word = hectopascals.clamp(0_f32, f32::from(u16::MAX)) as u16;
 
     word
 }
@@ -100,16 +117,20 @@ pub(crate) fn signed_word_to_co2(word: i16) -> Co2 {
 
 /// Convert a CO₂ value to a word
 pub(crate) fn co2_to_word(co2: Co2) -> u16 {
-    #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]
-    let word = ppm_from_co2(co2) as u16;
+    let ppms = ppm_from_co2(co2);
+
+    #[expect(
+        clippy::cast_possible_truncation,
+        clippy::cast_sign_loss,
+        reason = "Manually validated"
+    )]
+    let word = ppms.clamp(0_f32, f32::from(u16::MAX)) as u16;
 
     word
 }
 
 #[cfg(test)]
 mod tests {
-    #![allow(clippy::panic_in_result_fn)]
-
     use super::*;
 
     #[test]

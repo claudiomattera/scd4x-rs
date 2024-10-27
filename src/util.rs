@@ -30,7 +30,7 @@ pub(crate) fn buffer_to_three_words(buffer: [u8; 9]) -> Result<(u16, u16, u16), 
 ///
 /// Returns an error if the checksum does not match.
 pub(crate) fn buffer_to_word(byte0: u8, byte1: u8, byte2: u8) -> Result<u16, Error> {
-    let word = (u16::from(byte0) << 8) + u16::from(byte1);
+    let word = (u16::from(byte0) << 8_i32) + u16::from(byte1);
 
     verify_checksum([byte0, byte1], byte2)?;
 

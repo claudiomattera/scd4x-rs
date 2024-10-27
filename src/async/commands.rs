@@ -6,7 +6,10 @@
 // https://opensource.org/licenses/MIT
 // https://opensource.org/licenses/Apache-2.0
 
-#![allow(clippy::semicolon_if_nothing_returned)]
+#![expect(
+    clippy::semicolon_if_nothing_returned,
+    reason = "Consistency when return type is unit"
+)]
 
 //! Available commands
 //!
@@ -564,7 +567,7 @@ impl Command for PerformForcedRecalibration {
         } else {
             let wrapped_word: u16 = word.wrapping_sub(0x8000);
 
-            #[allow(clippy::cast_possible_wrap)]
+            #[expect(clippy::cast_possible_wrap, reason = "Wrapping is desired")]
             let signed_word: i16 = wrapped_word as i16;
 
             Some(signed_word_to_co2(signed_word))

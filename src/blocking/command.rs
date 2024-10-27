@@ -112,7 +112,10 @@ impl SequenceType for SendCommandSequence {
         i2c.write(address, &buffer)?;
 
         trace!("Wait {delay:?}");
-        #[allow(clippy::cast_possible_truncation)]
+        #[expect(
+            clippy::cast_possible_truncation,
+            reason = "Constants are within limits"
+        )]
         delayer.delay_ms(delay.as_millis() as u32);
 
         Ok(())
@@ -161,7 +164,10 @@ impl SequenceType for SendCommandAndFetchResultSequence {
         i2c.write(address, &buffer)?;
 
         trace!("Wait {delay:?}");
-        #[allow(clippy::cast_possible_truncation)]
+        #[expect(
+            clippy::cast_possible_truncation,
+            reason = "Constants are within limits"
+        )]
         delayer.delay_ms(delay.as_millis() as u32);
 
         let mut output_buffer: [u8; 3] = [0; 3];
@@ -203,7 +209,10 @@ impl SequenceType for ReadWordSequence {
         i2c.write(address, &buffer)?;
 
         trace!("Wait {delay:?}");
-        #[allow(clippy::cast_possible_truncation)]
+        #[expect(
+            clippy::cast_possible_truncation,
+            reason = "Constants are within limits"
+        )]
         delayer.delay_ms(delay.as_millis() as u32);
 
         trace!("Read data");
@@ -243,7 +252,10 @@ impl SequenceType for ReadThreeWordsSequence {
         i2c.write(address, &buffer)?;
 
         trace!("Wait {delay:?}");
-        #[allow(clippy::cast_possible_truncation)]
+        #[expect(
+            clippy::cast_possible_truncation,
+            reason = "Constants are within limits"
+        )]
         delayer.delay_ms(delay.as_millis() as u32);
 
         trace!("Read data");
@@ -309,7 +321,10 @@ impl SequenceType for WriteWordSequence {
         i2c.write(address, &buffer)?;
 
         trace!("Wait {delay:?}");
-        #[allow(clippy::cast_possible_truncation)]
+        #[expect(
+            clippy::cast_possible_truncation,
+            reason = "Constants are within limits"
+        )]
         delayer.delay_ms(delay.as_millis() as u32);
 
         Ok(())

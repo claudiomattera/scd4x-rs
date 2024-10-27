@@ -8,9 +8,8 @@
 
 //! Example of continuous operation of SCD4x sensor through a FT232H board
 
+use core::error::Error;
 use core::time::Duration;
-
-use std::error::Error;
 
 use env_logger::init as init_logger;
 
@@ -74,7 +73,7 @@ where
     let samples: Result<Vec<_>, Scd4xError> = (0..MEASUREMENTS_COUNT)
         .map(|_| {
             info!("Waiting {SLEEP_INTERVAL:?} before next measurement");
-            #[allow(clippy::cast_possible_truncation)]
+            #[expect(clippy::cast_possible_truncation, reason = "Constant is within limits")]
             delay.delay_ms(SLEEP_INTERVAL.as_millis() as u32);
 
             let sample = sensor.read_measurement()?;

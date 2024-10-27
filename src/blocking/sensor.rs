@@ -417,7 +417,7 @@ where
 
 #[cfg(test)]
 mod tests {
-    #![allow(clippy::panic_in_result_fn)]
+    #![expect(clippy::panic_in_result_fn, reason = "Assertions in tests")]
 
     use super::*;
 

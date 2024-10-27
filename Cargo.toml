@@ -76,6 +76,12 @@ missing_docs = "deny"
 [lints.clippy]
 # Categories
 cargo = { level = "deny", priority = -1 }
+correctness = { level = "deny", priority = -1 }
+suspicious = { level = "deny", priority = -1 }
+complexity = { level = "deny", priority = -1 }
+perf = { level = "deny", priority = -1 }
+style = { level = "deny", priority = -1 }
+restriction = { level = "allow", priority = -1 }
 pedantic = { level = "deny", priority = -1 }
 
 # Individuals
@@ -111,3 +117,11 @@ unreachable = "deny"
 unseparated_literal_suffix = "deny"
 unwrap_used = "deny"
 verbose_file_reads = "deny"
+
+# Additional (warning)
+default_numeric_fallback = "warn"
+min_ident_chars = "warn"
+multiple_inherent_impl = "warn"
+multiple_unsafe_ops_per_block = "warn"
+shadow_same = "warn"
+single_char_lifetime_names = "warn"

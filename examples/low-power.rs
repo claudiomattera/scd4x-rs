@@ -8,9 +8,8 @@
 
 //! Example of one-short, low-power operation of SCD4x sensor through a FT232H board
 
+use core::error::Error;
 use core::time::Duration;
-
-use std::error::Error;
 
 use env_logger::init as init_logger;
 
@@ -90,7 +89,7 @@ where
         }
 
         info!("Not ready yet, waiting {DATA_AVAILABILITY_CHECK_INTERVAL:?}");
-        #[allow(clippy::cast_possible_truncation)]
+        #[expect(clippy::cast_possible_truncation, reason = "Constant is within limits")]
         delay.delay_ms(DATA_AVAILABILITY_CHECK_INTERVAL.as_millis() as u32);
     }
 
