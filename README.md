@@ -37,7 +37,6 @@ Optionally enable the desired features.
 |----------------------|------------------------------------------|
 | `blocking` (default) | Enable the blocking sensor `Scd4x`       |
 | `async` (default)    | Enable the async sensor `AsyncScd4x`     |
-| `std`                | Implement `std::error::Error` for errors |
 | `uom`                | Use `uom` for measurement types          |
 
 A `Scd4x` structure can be created from an I²C interface and a delay function.

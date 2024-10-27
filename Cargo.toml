@@ -8,7 +8,7 @@ readme = "README.md"
 homepage = "https://gitlab.com/claudiomattera/scd4x-rs"
 repository = "https://gitlab.com/claudiomattera/scd4x-rs"
 license = "MIT OR Apache-2.0"
-rust-version = "1.75"
+rust-version = "1.81"
 keywords = [
     "async",
     "co2",
@@ -36,15 +36,14 @@ default = ["blocking", "async"]
 blocking = ["dep:embedded-hal"]
 async = ["dep:embedded-hal", "dep:embedded-hal-async"]
 uom = ["dep:uom"]
-std = []
 
 [[example]]
 name = "continuous"
-required-features = ["std", "blocking", "uom"]
+required-features = ["blocking", "uom"]
 
 [[example]]
 name = "low-power"
-required-features = ["std", "blocking", "uom"]
+required-features = ["blocking", "uom"]
 
 [dependencies]
 # Logging

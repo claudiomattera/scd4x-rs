@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add tests for async API
+- Push minimal supported Rust version to 1.81
+- Implement `core::error::Error` instead of `std::error::Error`
+- Remove feature `std`
 
 
 ## Version [0.2.0] - 2024-06-25

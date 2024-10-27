@@ -7,7 +7,7 @@
 // https://opensource.org/licenses/Apache-2.0
 
 #![cfg_attr(not(doctest), doc = include_str!("../README.md"))]
-#![cfg_attr(all(not(test), not(feature = "std")), no_std)]
+#![cfg_attr(not(test), no_std)]
 
 #[cfg(feature = "async")]
 mod r#async;
