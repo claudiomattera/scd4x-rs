@@ -36,18 +36,21 @@ default = ["blocking", "async"]
 blocking = ["dep:embedded-hal"]
 async = ["dep:embedded-hal", "dep:embedded-hal-async"]
 uom = ["dep:uom"]
+defmt = ["dep:defmt"]
+log = ["dep:log"]
 
 [[example]]
 name = "continuous"
-required-features = ["blocking", "uom"]
+required-features = ["blocking", "uom", "log"]
 
 [[example]]
 name = "low-power"
-required-features = ["blocking", "uom"]
+required-features = ["blocking", "uom", "log"]
 
 [dependencies]
 # Logging
-log = { version = "0.4", default-features = false }
+log = { version = "0.4", default-features = false, optional = true }
+defmt = { version = "0.3", default-features = false, optional = true }
 
 # Hardware Abstraction Layer (HAL)
 embedded-hal = { version = "1", default-features = false, optional = true }

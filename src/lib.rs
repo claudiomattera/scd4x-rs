@@ -40,6 +40,9 @@ mod error;
 pub use self::error::Error;
 
 #[cfg(any(feature = "async", feature = "blocking"))]
+mod macros;
+
+#[cfg(any(feature = "async", feature = "blocking"))]
 mod sample;
 #[cfg(any(feature = "async", feature = "blocking"))]
 pub use self::sample::Altitude;

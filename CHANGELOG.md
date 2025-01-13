@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Push minimal supported Rust version to 1.81
 - Implement `core::error::Error` instead of `std::error::Error`
 - Remove feature `std`
+- Add support for logging through crate `defmt`
 
 
 ## Version [0.2.0] - 2024-06-25

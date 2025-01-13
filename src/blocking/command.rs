@@ -10,12 +10,11 @@
 
 use core::time::Duration;
 
-use log::trace;
-
 use embedded_hal::delay::DelayNs;
 use embedded_hal::i2c::I2c;
 
 use crate::compute_checksum;
+use crate::macros::trace;
 use crate::util::buffer_to_three_words;
 use crate::util::buffer_to_word;
 use crate::Error;
@@ -111,7 +110,7 @@ impl SequenceType for SendCommandSequence {
         trace!("Write data 0x{:02x}{:02x}", buffer[0], buffer[1]);
         i2c.write(address, &buffer)?;
 
-        trace!("Wait {delay:?}");
+        trace!("Wait {:?}", delay);
         #[expect(
             clippy::cast_possible_truncation,
             reason = "Constants are within limits"
@@ -163,7 +162,7 @@ impl SequenceType for SendCommandAndFetchResultSequence {
 
         i2c.write(address, &buffer)?;
 
-        trace!("Wait {delay:?}");
+        trace!("Wait {:?}", delay);
         #[expect(
             clippy::cast_possible_truncation,
             reason = "Constants are within limits"
@@ -208,7 +207,7 @@ impl SequenceType for ReadWordSequence {
         trace!("Write data 0x{:02x}{:02x}", buffer[0], buffer[1]);
         i2c.write(address, &buffer)?;
 
-        trace!("Wait {delay:?}");
+        trace!("Wait {:?}", delay);
         #[expect(
             clippy::cast_possible_truncation,
             reason = "Constants are within limits"
@@ -251,7 +250,7 @@ impl SequenceType for ReadThreeWordsSequence {
         trace!("Write data 0x{:02x}{:02x}", buffer[0], buffer[1]);
         i2c.write(address, &buffer)?;
 
-        trace!("Wait {delay:?}");
+        trace!("Wait {:?}", delay);
         #[expect(
             clippy::cast_possible_truncation,
             reason = "Constants are within limits"
@@ -320,7 +319,7 @@ impl SequenceType for WriteWordSequence {
 
         i2c.write(address, &buffer)?;
 
-        trace!("Wait {delay:?}");
+        trace!("Wait {:?}", delay);
         #[expect(
             clippy::cast_possible_truncation,
             reason = "Constants are within limits"

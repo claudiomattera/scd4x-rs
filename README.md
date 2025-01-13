@@ -38,6 +38,8 @@ Optionally enable the desired features.
 | `blocking` (default) | Enable the blocking sensor `Scd4x`       |
 | `async` (default)    | Enable the async sensor `AsyncScd4x`     |
 | `uom`                | Use `uom` for measurement types          |
+| `log`                | Use `log` for logging                    |
+| `defmt`              | Use `defmt` for logging                  |
 
 A `Scd4x` structure can be created from an I²C interface and a delay function.
 
@@ -162,6 +164,18 @@ When instead enabling the Cargo feature `uom`, it uses quantities from crate [uo
 CO₂ concentration values have type `uom::si::f32::Ratio`, temperature values have type `uom::si::f32::ThermodynamicTemperature`, humidity values have type `uom::si::f32::Ratio`, altitude values have type `uom::si::f32::Length`, and pressure values have type `uom::si::f32::Pressure`.
 
 [uom]: https://crates.io/crates/uom
+
+
+Logging
+----
+
+When enabling Cargo feature `log`, internal logging uses the crate [log].
+When enabling feature `defmt`, internal logging uses the crate [defmt].
+When disabling both features, internal logging is disabled.
+When enabling both features, internal logging uses both crates (this is probably undesired, but it makes features additive).
+
+[log]: https://crates.io/crates/log
+[defmt]: https://crates.io/crates/defmt
 
 
 License

@@ -10,12 +10,11 @@
 
 use core::marker::PhantomData;
 
-use log::debug;
-
 use embedded_hal_async::delay::DelayNs;
 use embedded_hal_async::i2c::I2c;
 
 use crate::constants::DEFAULT_ADDRESS;
+use crate::macros::debug;
 use crate::sample::Sample;
 use crate::Altitude;
 use crate::Co2;
