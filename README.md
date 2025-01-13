@@ -181,7 +181,7 @@ When enabling both features, internal logging uses both crates (this is probably
 License
 ----
 
-Copyright Claudio Mattera 2024
+Copyright Claudio Mattera 2024-2025
 
 You are free to copy, modify, and distribute this application with attribution under the terms of either
 
