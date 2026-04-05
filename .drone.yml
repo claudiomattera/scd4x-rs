@@ -88,13 +88,14 @@ steps:
   when:
     event:
     - tag
-  image: plugins/gitea-release
+  image: docker.claudiomattera.it/claudiomattera/drone-gitea-release:1
   settings:
     base_url:
       from_secret: gitea_host
     api_key:
       from_secret: gitea_token
     title: "Version ${DRONE_TAG}"
+    changelog_path: CHANGELOG.md
 
 - name: publish on crates.io
   when:
