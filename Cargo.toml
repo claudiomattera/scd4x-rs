@@ -143,3 +143,6 @@ multiple_inherent_impl = "warn"
 multiple_unsafe_ops_per_block = "warn"
 shadow_same = "warn"
 single_char_lifetime_names = "warn"
+
+# defmt does not support inlined format args
+uninlined_format_args = "allow"
