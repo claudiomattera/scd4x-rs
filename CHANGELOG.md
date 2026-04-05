@@ -16,6 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove feature `std`
 - Add support for logging through crate `defmt`
 
+### Changed
+
+- Update crate `uom` to version 0.38
+- Update crate `ftdi-embedded-hal` to version 0.24 (in tests)
+
 
 ## Version [0.2.0] - 2024-06-25
 

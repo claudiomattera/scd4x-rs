@@ -62,7 +62,7 @@ embedded-hal = { version = "1", default-features = false, optional = true }
 embedded-hal-async = { version = "1", default-features = false, optional = true }
 
 # Unit of measurement
-uom = { version = "0.36", default-features = false, features = ["f32", "si"], optional = true }
+uom = { version = "0.38", default-features = false, features = ["f32", "si"], optional = true }
 
 [dev-dependencies]
 # Logging
@@ -72,7 +72,7 @@ env_logger = { version = "0.11" }
 embedded-hal-mock = { version = "0.11", default-features = false, features = ["eh1", "embedded-hal-async"] }
 
 # Hardware Abstraction Layer (HAL)
-ftdi-embedded-hal = { version = "0.22", default-features = false, features = ["libftd2xx", "libftd2xx-static"] }
+ftdi-embedded-hal = { version = "0.24", default-features = false, features = ["libftd2xx", "libftd2xx-static"] }
 ftdi = { version = "0.1", default-features = false }
 
 # Asynchronous runtime
