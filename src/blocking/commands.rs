@@ -1,12 +1,15 @@
-// Copyright Claudio Mattera 2024.
+// Copyright Claudio Mattera 2024-2026.
 //
 // Distributed under the MIT License or the Apache 2.0 License at your option.
-// See the accompanying files License-MIT.txt and License-Apache-2.0.txt, or
+// See the accompanying files LICENSE-MIT.txt and LICENSE-APACHE-2.0.txt, or
 // online at
 // https://opensource.org/licenses/MIT
 // https://opensource.org/licenses/Apache-2.0
 
-#![allow(clippy::semicolon_if_nothing_returned)]
+#![expect(
+    clippy::semicolon_if_nothing_returned,
+    reason = "Consistency when return type is unit"
+)]
 
 //! Available commands
 //!
@@ -564,7 +567,7 @@ impl Command for PerformForcedRecalibration {
         } else {
             let wrapped_word: u16 = word.wrapping_sub(0x8000);
 
-            #[allow(clippy::cast_possible_wrap)]
+            #[expect(clippy::cast_possible_wrap, reason = "Wrapping is desired")]
             let signed_word: i16 = wrapped_word as i16;
 
             Some(signed_word_to_co2(signed_word))

@@ -1,13 +1,13 @@
-// Copyright Claudio Mattera 2024.
+// Copyright Claudio Mattera 2024-2026.
 //
 // Distributed under the MIT License or the Apache 2.0 License at your option.
-// See the accompanying files License-MIT.txt and License-Apache-2.0.txt, or
+// See the accompanying files LICENSE-MIT.txt and LICENSE-APACHE-2.0.txt, or
 // online at
 // https://opensource.org/licenses/MIT
 // https://opensource.org/licenses/Apache-2.0
 
 #![cfg_attr(not(doctest), doc = include_str!("../README.md"))]
-#![cfg_attr(all(not(test), not(feature = "std")), no_std)]
+#![cfg_attr(not(test), no_std)]
 
 #[cfg(feature = "async")]
 mod r#async;
@@ -38,6 +38,9 @@ mod conversion;
 mod error;
 #[cfg(any(feature = "async", feature = "blocking"))]
 pub use self::error::Error;
+
+#[cfg(any(feature = "async", feature = "blocking"))]
+mod macros;
 
 #[cfg(any(feature = "async", feature = "blocking"))]
 mod sample;

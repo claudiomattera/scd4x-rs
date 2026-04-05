@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [0.3.0] - 2026-04-05
+
+### Added
+
+- Add tests for async API
+- Push minimal supported Rust version to 1.81
+- Implement `core::error::Error` instead of `std::error::Error`
+- Remove feature `std`
+- Add support for logging through crate `defmt`
+
+### Changed
+
+- Update crate `uom` to version 0.38
+- Update crate `ftdi-embedded-hal` to version 0.24 (in tests)
+
+
 ## Version [0.2.0] - 2024-06-25
 
 ### Added
@@ -31,3 +47,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [0.1.0]: https://gitlab.com/claudiomattera/scd4x-rs/-/tags/0.1.0
 [0.2.0]: https://gitlab.com/claudiomattera/scd4x-rs/-/tags/0.2.0
+[0.3.0]: https://gitlab.com/claudiomattera/scd4x-rs/-/tags/0.3.0

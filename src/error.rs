@@ -1,7 +1,7 @@
-// Copyright Claudio Mattera 2024.
+// Copyright Claudio Mattera 2024-2026.
 //
 // Distributed under the MIT License or the Apache 2.0 License at your option.
-// See the accompanying files License-MIT.txt and License-Apache-2.0.txt, or
+// See the accompanying files LICENSE-MIT.txt and LICENSE-APACHE-2.0.txt, or
 // online at
 // https://opensource.org/licenses/MIT
 // https://opensource.org/licenses/Apache-2.0
@@ -36,12 +36,10 @@ where
     }
 }
 
-#[cfg(feature = "std")]
-impl std::error::Error for Error {}
+impl core::error::Error for Error {}
 
-#[cfg(feature = "std")]
 impl core::fmt::Display for Error {
-    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        write!(f, "{self:?}")
+    fn fmt(&self, formatter: &mut core::fmt::Formatter) -> core::fmt::Result {
+        write!(formatter, "{self:?}")
     }
 }

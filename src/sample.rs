@@ -1,7 +1,7 @@
-// Copyright Claudio Mattera 2024.
+// Copyright Claudio Mattera 2024-2026.
 //
 // Distributed under the MIT License or the Apache 2.0 License at your option.
-// See the accompanying files License-MIT.txt and License-Apache-2.0.txt, or
+// See the accompanying files LICENSE-MIT.txt and LICENSE-APACHE-2.0.txt, or
 // online at
 // https://opensource.org/licenses/MIT
 // https://opensource.org/licenses/Apache-2.0
@@ -85,7 +85,7 @@ pub(crate) fn hectopascal_from_pressure(pressure: Pressure) -> f32 {
     pressure.get::<hectopascal>()
 }
 
-#[cfg(all(feature = "uom", feature = "blocking"))]
+#[cfg(all(feature = "uom", any(feature = "blocking", feature = "async")))]
 #[cfg(test)]
 /// Convert a raw value in hectoPascal to a pressure
 pub(crate) fn pressure_from_hectopascal(raw: f32) -> Pressure {
@@ -160,7 +160,7 @@ pub(crate) fn hectopascal_from_pressure(pressure: Pressure) -> f32 {
     pressure
 }
 
-#[cfg(all(not(feature = "uom"), feature = "blocking"))]
+#[cfg(all(not(feature = "uom"), any(feature = "blocking", feature = "async")))]
 #[cfg(test)]
 /// Convert a raw value in hectoPascal to a pressure
 pub(crate) fn pressure_from_hectopascal(raw: f32) -> Pressure {

@@ -1,6 +1,6 @@
 [package]
 name = "scd4x-rs"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Claudio Mattera <dev@claudiomattera.it>"]
 edition = "2021"
 description = "A crate to query SCD4x sensors over I²C"
@@ -8,7 +8,7 @@ readme = "README.md"
 homepage = "https://gitlab.com/claudiomattera/scd4x-rs"
 repository = "https://gitlab.com/claudiomattera/scd4x-rs"
 license = "MIT OR Apache-2.0"
-rust-version = "1.75"
+rust-version = "1.81"
 keywords = [
     "async",
     "co2",
@@ -31,31 +31,38 @@ exclude = [
     "justfile",
 ]
 
+[package.metadata.docs.rs]
+all-features = true
+default-target = "riscv32imc-unknown-none-elf"
+targets = ["x86_64-unknown-linux-gnu"]
+
 [features]
 default = ["blocking", "async"]
 blocking = ["dep:embedded-hal"]
 async = ["dep:embedded-hal", "dep:embedded-hal-async"]
 uom = ["dep:uom"]
-std = []
+defmt = ["dep:defmt"]
+log = ["dep:log"]
 
 [[example]]
 name = "continuous"
-required-features = ["std", "blocking", "uom"]
+required-features = ["blocking", "uom", "log"]
 
 [[example]]
 name = "low-power"
-required-features = ["std", "blocking", "uom"]
+required-features = ["blocking", "uom", "log"]
 
 [dependencies]
 # Logging
-log = { version = "0.4", default-features = false }
+log = { version = "0.4", default-features = false, optional = true }
+defmt = { version = "0.3", default-features = false, optional = true }
 
 # Hardware Abstraction Layer (HAL)
 embedded-hal = { version = "1", default-features = false, optional = true }
 embedded-hal-async = { version = "1", default-features = false, optional = true }
 
 # Unit of measurement
-uom = { version = "0.36", default-features = false, features = ["f32", "si"], optional = true }
+uom = { version = "0.38", default-features = false, features = ["f32", "si"], optional = true }
 
 [dev-dependencies]
 # Logging
@@ -65,15 +72,35 @@ env_logger = { version = "0.11" }
 embedded-hal-mock = { version = "0.11", default-features = false, features = ["eh1", "embedded-hal-async"] }
 
 # Hardware Abstraction Layer (HAL)
-ftdi-embedded-hal = { version = "0.22", default-features = false, features = ["libftd2xx", "libftd2xx-static"] }
+ftdi-embedded-hal = { version = "0.24", default-features = false, features = ["libftd2xx", "libftd2xx-static"] }
 ftdi = { version = "0.1", default-features = false }
+
+# Asynchronous runtime
+tokio = { version = "1", default-features = false, features = ["rt", "macros"] }
 
 [lints.rust]
 missing_docs = "deny"
 
+[lints.rustdoc]
+bare_urls = "deny"
+broken_intra_doc_links = "deny"
+invalid_codeblock_attributes = "deny"
+invalid_html_tags = "deny"
+invalid_rust_codeblocks = "deny"
+missing_crate_level_docs = "deny"
+private_intra_doc_links = "deny"
+redundant_explicit_links = "deny"
+unescaped_backticks = "deny"
+
 [lints.clippy]
 # Categories
 cargo = { level = "deny", priority = -1 }
+correctness = { level = "deny", priority = -1 }
+suspicious = { level = "deny", priority = -1 }
+complexity = { level = "deny", priority = -1 }
+perf = { level = "deny", priority = -1 }
+style = { level = "deny", priority = -1 }
+restriction = { level = "allow", priority = -1 }
 pedantic = { level = "deny", priority = -1 }
 
 # Individuals
@@ -101,7 +128,6 @@ std_instead_of_alloc = "deny"
 std_instead_of_core = "deny"
 str_to_string = "deny"
 string_slice = "deny"
-string_to_string = "deny"
 todo = "deny"
 undocumented_unsafe_blocks = "deny"
 unimplemented = "deny"
@@ -109,3 +135,14 @@ unreachable = "deny"
 unseparated_literal_suffix = "deny"
 unwrap_used = "deny"
 verbose_file_reads = "deny"
+
+# Additional (warning)
+default_numeric_fallback = "warn"
+min_ident_chars = "warn"
+multiple_inherent_impl = "warn"
+multiple_unsafe_ops_per_block = "warn"
+shadow_same = "warn"
+single_char_lifetime_names = "warn"
+
+# defmt does not support inlined format args
+uninlined_format_args = "allow"

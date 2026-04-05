@@ -2,10 +2,10 @@ Rust SCD4x Crate
 ====
 
 ![Version](https://img.shields.io/crates/v/scd4x-rs)
-![Documentation](https://img.shields.io/docsrs/scd4x-rs/0.2.0)
-![Downloads](https://img.shields.io/crates/dv/scd4x-rs/0.2.0)
-![License](https://img.shields.io/crates/l/scd4x-rs/0.2.0)
-![MSRV](https://img.shields.io/crates/msrv/scd4x-rs/0.2.0)
+![Documentation](https://img.shields.io/docsrs/scd4x-rs/0.3.0)
+![Downloads](https://img.shields.io/crates/dv/scd4x-rs/0.3.0)
+![License](https://img.shields.io/crates/l/scd4x-rs/0.3.0)
+![MSRV](https://img.shields.io/crates/msrv/scd4x-rs/0.3.0)
 
 A Rust crate to query CO₂ concentration, temperature and humidity from sensor [SCD4x]
 
@@ -28,7 +28,7 @@ Add the dependency to `Cargo.toml`.
 
 ~~~~toml
 [dependencies.scd4x-rs]
-version = "0.2.0"
+version = "0.3.0"
 ~~~~
 
 Optionally enable the desired features.
@@ -37,8 +37,9 @@ Optionally enable the desired features.
 |----------------------|------------------------------------------|
 | `blocking` (default) | Enable the blocking sensor `Scd4x`       |
 | `async` (default)    | Enable the async sensor `AsyncScd4x`     |
-| `std`                | Implement `std::error::Error` for errors |
 | `uom`                | Use `uom` for measurement types          |
+| `log`                | Use `log` for logging                    |
+| `defmt`              | Use `defmt` for logging                  |
 
 A `Scd4x` structure can be created from an I²C interface and a delay function.
 
@@ -165,10 +166,22 @@ CO₂ concentration values have type `uom::si::f32::Ratio`, temperature values h
 [uom]: https://crates.io/crates/uom
 
 
+Logging
+----
+
+When enabling Cargo feature `log`, internal logging uses the crate [log].
+When enabling feature `defmt`, internal logging uses the crate [defmt].
+When disabling both features, internal logging is disabled.
+When enabling both features, internal logging uses both crates (this is probably undesired, but it makes features additive).
+
+[log]: https://crates.io/crates/log
+[defmt]: https://crates.io/crates/defmt
+
+
 License
 ----
 
-Copyright Claudio Mattera 2024
+Copyright Claudio Mattera 2024-2026
 
 You are free to copy, modify, and distribute this application with attribution under the terms of either
 

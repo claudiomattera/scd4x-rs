@@ -1,7 +1,7 @@
-// Copyright Claudio Mattera 2024.
+// Copyright Claudio Mattera 2024-2026.
 //
 // Distributed under the MIT License or the Apache 2.0 License at your option.
-// See the accompanying files License-MIT.txt and License-Apache-2.0.txt, or
+// See the accompanying files LICENSE-MIT.txt and LICENSE-APACHE-2.0.txt, or
 // online at
 // https://opensource.org/licenses/MIT
 // https://opensource.org/licenses/Apache-2.0
@@ -10,12 +10,11 @@
 
 use core::marker::PhantomData;
 
-use log::debug;
-
 use embedded_hal::delay::DelayNs;
 use embedded_hal::i2c::I2c;
 
 use crate::constants::DEFAULT_ADDRESS;
+use crate::macros::debug;
 use crate::sample::Sample;
 use crate::Altitude;
 use crate::Co2;
@@ -417,7 +416,7 @@ where
 
 #[cfg(test)]
 mod tests {
-    #![allow(clippy::panic_in_result_fn)]
+    #![expect(clippy::panic_in_result_fn, reason = "Assertions in tests")]
 
     use super::*;
 

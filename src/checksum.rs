@@ -1,7 +1,7 @@
-// Copyright Claudio Mattera 2024.
+// Copyright Claudio Mattera 2024-2026.
 //
 // Distributed under the MIT License or the Apache 2.0 License at your option.
-// See the accompanying files License-MIT.txt and License-Apache-2.0.txt, or
+// See the accompanying files LICENSE-MIT.txt and LICENSE-APACHE-2.0.txt, or
 // online at
 // https://opensource.org/licenses/MIT
 // https://opensource.org/licenses/Apache-2.0
@@ -37,12 +37,12 @@ pub fn compute(data: [u8; 2]) -> u8 {
     for datum in data {
         crc ^= datum;
 
-        #[allow(clippy::assign_op_pattern)]
-        for _ in 0..8 {
+        #[expect(clippy::assign_op_pattern, reason = "Consistency within all branches")]
+        for _ in 0_i32..8_i32 {
             if crc & 0x80 != 0x00 {
-                crc = (crc << 1) ^ CRC8_POLYNOMIAL;
+                crc = (crc << 1_i32) ^ CRC8_POLYNOMIAL;
             } else {
-                crc = crc << 1;
+                crc = crc << 1_i32;
             }
         }
     }
